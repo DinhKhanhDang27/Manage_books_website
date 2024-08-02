@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books List</title>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f4f4;
+            color: #333;
+            padding: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #007bff;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #007bff;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .logout-button {
+            display: block;
+            margin: 20px 0;
+            text-align: right;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
+        .logout-button .btn {
+            background-color: #dc3545; /* Red color for logout button */
+        }
+        .logout-button .btn:hover {
+            background-color: #c82333; /* Darker red for hover effect */
+        }
+        .create-button {
+            display: block;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .create-button .btn {
+            background-color: #28a745; /* Green color for create button */
+        }
+        .create-button .btn:hover {
+            background-color: #218838; /* Darker green for hover effect */
+        }
+    </style>
+</head>
+<body>
+<div class="logout-button">
+    <a href="{{ path('app_logout') }}" class="btn">Logout</a>
+</div>
+<h1>Books List</h1>
+<div class="create-button">
+    <a href="{{ path('new_book') }}" class="btn">Create</a>
+</div>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Book ID</th>
+        <th>Title</th>
+        <th>Author ID</th>
+        <th>Category ID</th>
+        <th>Price</th>
+        <th>Created At</th>
+        <th>Updated At</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for book in books %}
+        <tr>
+            <td>{{ book.id }}</td>
+            <td>{{ book.bookId }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.authorId }}</td>
+            <td>{{ book.categoryId }}</td>
+            <td>{{ book.price }}</td>
+            <td>{{ book.createdAt|date('Y-m-d H:i') }}</td>
+            <td>{{ book.updatedAt|date('Y-m-d H:i') }}</td>
+            <td>
+                <a href="{{ path('update_book', { id: book.id }) }}">Edit</a> |
+                <a href="{{ path('delete_book', { id: book.id }) }}" onclick="return confirm('Are you sure you want to delete this book?');">Delete</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

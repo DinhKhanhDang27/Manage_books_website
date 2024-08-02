@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Dang Bookstore</title>
+    <!-- Link Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f2f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .container {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+        }
+        .welcome-message {
+            font-size: 3em;
+            font-weight: 700; /* In đậm */
+            color: #333;
+            margin-bottom: 30px;
+            font-family: 'Roboto', sans-serif; /* Sử dụng font Google */
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            font-size: 1.1em;
+            color: #fff;
+            background-color: #007bff;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+        .btn:active {
+            background-color: #004494;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="welcome-message">
+        Welcome to Dang bookstore
+    </div>
+    <div class="button-container">
+        <a href="{{ path('view_books') }}" class="btn">WATCH LIST BOOKS</a>
+        <a href="{{ path('books_list') }}" class="btn">LOGIN AS ADMIN</a>
+    </div>
+</div>
+</body>
+</html>
